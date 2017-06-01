@@ -1,0 +1,29 @@
+@startuml
+title Beachbody Blog Content Syndication
+
+actor ContentManager as "Content Manager"
+autonumber
+ContentManager -> BeachbodyBlog: Creates content
+ContentManager -> BeachbodyBlog: Sets where content is delivered
+autonumber stop
+
+participant BeachbodyBlog as "Beachbody Blog"
+participant TeamBeachbodyBlog as "Team Beachbody Blog"
+
+actor User
+User -> TeamBeachbodyBlog: Requests to view page
+
+autonumber
+TeamBeachbodyBlog -> BeachbodyBlog: Content Request
+BeachbodyBlog -> TeamBeachbodyBlog: Provide Allowed Content
+note left
+    The links need
+    to be transformed.
+    Link mapping can be
+    set on BeachbodyBlog
+end note
+autonumber stop
+
+TeamBeachbodyBlog -> User: Serves syndicated content
+
+@enduml
